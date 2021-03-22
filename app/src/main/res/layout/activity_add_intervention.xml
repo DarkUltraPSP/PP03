@@ -107,7 +107,7 @@
                             android:text="Symptome Defaut" />
 
                         <Spinner
-                            android:id="@+id/spinSymptome"
+                            android:id="@+id/spinSymptomeDefaut"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
@@ -167,7 +167,7 @@
                             android:text="Symptome Objet" />
 
                         <Spinner
-                            android:id="@+id/spinSymptomeDefaut"
+                            android:id="@+id/spinSymptomeObjet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
