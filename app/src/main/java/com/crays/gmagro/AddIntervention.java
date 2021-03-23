@@ -13,6 +13,7 @@ import com.crays.gmagro.daos.ActiviteDAO;
 import com.crays.gmagro.daos.CauseDefautDAO;
 import com.crays.gmagro.daos.MachineDAO;
 import com.crays.gmagro.daos.SymptomeDefautDAO;
+import com.crays.gmagro.daos.SymptomeObjetDAO;
 import com.crays.gmagro.models.Activite;
 import com.crays.gmagro.models.CauseDefaut;
 import com.crays.gmagro.models.CauseObjet;
@@ -60,6 +61,9 @@ public class AddIntervention extends AppCompatActivity {
 
         spinSymptDefaut.setAdapter(allSDefautAdapter);
         SymptomeDefautDAO.requestHTTPGetAllSymptomeDefaut(allSDefautAdapter);
+
+        spinSymptObjet.setAdapter(allSObjetAdapter);
+        SymptomeObjetDAO.requestHTTPGetAllSymptomeObjet(allSObjetAdapter);
     }
 
 
@@ -79,6 +83,10 @@ public class AddIntervention extends AppCompatActivity {
         allSDefautAdapter = new ArrayAdapter<Symptome_defaut>(this,
                 android.R.layout.simple_spinner_dropdown_item,
                 SymptomeDefautDAO.AllSDefaut
+        );
+        allSObjetAdapter = new ArrayAdapter<Symptome_objet>(this,
+                android.R.layout.simple_spinner_dropdown_item,
+                SymptomeObjetDAO.allSymptomeObjet
         );
     }
 
