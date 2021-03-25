@@ -2,12 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sendIntervention"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
     tools:context=".AddIntervention">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="5dp"
@@ -129,19 +131,19 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/txtView5"
+                            android:id="@+id/tvShowHour"
                             android:layout_width="match_parent"
-                            android:layout_height="19dp"
+                            android:layout_height="37dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Heure de fin" />
+                            android:text="Heure Debut" />
 
-                        <Spinner
-                            android:id="@+id/spinDhDebut"
+                        <Button
+                            android:id="@+id/btnShowPopUp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="Selectionnez une date et une heure de debut" />
 
                         <TextView
                             android:id="@+id/txtView"
@@ -149,7 +151,7 @@
                             android:layout_height="19dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Temps d'arret" />
+                            android:text="Cause Objet" />
 
                         <Spinner
                             android:id="@+id/spinCauseObjet"
@@ -196,6 +198,7 @@
                 <LinearLayout
                     android:layout_width="202dp"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <CheckBox
@@ -222,20 +225,18 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/heureFin"
+                    <Button
+                        android:id="@+id/btnHeureFin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
+                        android:text="Selectionnez une date et une heure"
                         android:visibility="invisible" />
 
-                    <Spinner
-                        android:id="@+id/tpsPerdu"
+                    <Button
+                        android:id="@+id/btnTpsArret"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
+                        android:text="Selectionnez une heure"
                         android:visibility="invisible" />
 
                     <CheckBox
@@ -259,7 +260,8 @@
             <ListView
                 android:id="@+id/lvIntervenants"
                 android:layout_width="match_parent"
-                android:layout_height="82dp" />
+                android:layout_height="200dp"
+                android:background="@color/purple_200" />
 
             <LinearLayout
                 android:id="@+id/newInterventant"
@@ -270,20 +272,22 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/spinner24"
+                    android:id="@+id/spinIntervenant"
                     android:layout_width="580dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-                <Spinner
-                    android:id="@+id/spinner23"
+                <Button
+                    android:id="@+id/btnTpsPasse"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Temps passé" />
+
             </LinearLayout>
 
             <Button
-                android:id="@+id/addInterventant"
+                android:id="@+id/btnAddIntervLv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -304,6 +308,6 @@
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

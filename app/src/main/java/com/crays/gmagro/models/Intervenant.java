@@ -62,6 +62,6 @@ public class Intervenant {
 
     @Override
     public String toString() {
-        return getNom() + getPrenom();
+        return getNom() + " " + getPrenom();
     }
 }

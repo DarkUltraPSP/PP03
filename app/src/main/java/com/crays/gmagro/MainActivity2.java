@@ -1,4 +1,4 @@
-package com.crays.gmagro;
+    package com.crays.gmagro;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
