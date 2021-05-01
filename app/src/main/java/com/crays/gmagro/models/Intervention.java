@@ -21,7 +21,7 @@ public class Intervention {
     private String symptome_defaut_code;
     private String symptome_objet_code;
 
-    public Intervention(int id, String dh_debut, String dh_fin, String commentaire, String temps_arret, boolean changement_organe, boolean perte, String dh_creation, String dh_derniere_maj, int intervenant_id, String activity_code, String machine_code, String cause_defaut_code, String cause_objet_code, String symptome_defaut_code, String symptome_objet_code) {
+    public Intervention(int id, String dh_debut, String dh_fin, String commentaire, String temps_arret, boolean changement_organe, boolean perte, String dh_creation, String dh_derniere_maj, int intervenant_id, String activite_code, String machine_code, String cause_defaut_code, String cause_objet_code, String symptome_defaut_code, String symptome_objet_code) {
         this.id = id;
         this.dh_debut = dh_debut;
         this.dh_fin = dh_fin;
@@ -32,7 +32,7 @@ public class Intervention {
         this.dh_creation = dh_creation;
         this.dh_derniere_maj = dh_derniere_maj;
         this.intervenant_id = intervenant_id;
-        this.activite_code = activity_code;
+        this.activite_code = activite_code;
         this.machine_code = machine_code;
         this.cause_defaut_code = cause_defaut_code;
         this.cause_objet_code = cause_objet_code;

@@ -72,7 +72,7 @@ public class MainActivity2 extends AppCompatActivity
                 refreshTV(s);
             }
         };
-        asGetSession.execute("uc=getSession");
+        asGetSession.execute("uc=getSession&getIntervName=true");
     }
 
     private void refreshTV(String s) {

@@ -13,6 +13,9 @@ public class Intervenant {
     private String role_code;
     private String site_uai;
 
+    public Intervenant() {
+    }
+
     public int getId() {
         return id;
     }

@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 traiterLeRetourConnexion(s) ;
             }
         };
-
         as.execute("uc=connect&mail="+ l +"&password="+ m);
-
     }
 
     private void traiterLeRetourConnexion(String s) {

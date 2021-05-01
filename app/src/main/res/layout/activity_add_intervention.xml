@@ -39,7 +39,8 @@
                     android:id="@+id/btnDeco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deconnexion" />
+                    android:text="Deconnexion"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -143,7 +144,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Selectionnez une date et une heure de debut" />
+                            android:text="Selectionnez une date et une heure de debut"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/txtView"
@@ -184,10 +186,16 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:text="Commentaires a ajouter" />
+
+            <EditText
+                android:id="@+id/editTextCommentaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName" />
 
             <LinearLayout
                 android:id="@+id/commentaires"
@@ -236,7 +244,7 @@
                         android:id="@+id/btnTpsArret"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Selectionnez une heure"
+                        android:text="Selectionnez une durée"
                         android:visibility="invisible" />
 
                     <CheckBox
@@ -273,7 +281,7 @@
 
                 <Spinner
                     android:id="@+id/spinIntervenant"
-                    android:layout_width="580dp"
+                    android:layout_width="485dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 

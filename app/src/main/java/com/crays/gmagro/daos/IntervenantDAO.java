@@ -29,7 +29,6 @@ public class IntervenantDAO
                         JSONObject jsono = jsonArray.getJSONObject(i);
                         Intervenant intervenant = new Intervenant(jsono);
                         allIntervenant.add(intervenant);
-
                     }
                     adapter.notifyDataSetChanged();
                 }
@@ -41,6 +40,16 @@ public class IntervenantDAO
             }
         };
         as.execute("uc=getIntervenant");
+    }
+
+    public static String findIntervenantByID(int id) {
+        String name = "";
+        for (Intervenant interv : allIntervenant) {
+            if (interv.getId() == id) {
+                name = interv.getNom() + " " + interv.getPrenom();
+            }
+        }
+        return name;
     }
 
 }
