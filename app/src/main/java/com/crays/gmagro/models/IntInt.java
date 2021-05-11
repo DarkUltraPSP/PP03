@@ -28,6 +28,10 @@ public class IntInt {
         return tps_passe;
     }
 
+    public void setTps_passe(String tps_passe) {
+        this.tps_passe = tps_passe;
+    }
+
     public IntInt (JSONObject jsono) {
         try {
             this.intervention_id = jsono.getInt("intervention_id");

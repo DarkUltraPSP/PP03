@@ -126,7 +126,7 @@ public class MainActivity2 extends AppCompatActivity
 
             }
         };
-        asGetInterv.execute("uc=getIntervention");
+        asGetInterv.execute("uc=getIntervention&uai=true");
     }
 
     private void refreshLV()

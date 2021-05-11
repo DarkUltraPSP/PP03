@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -35,7 +37,9 @@ import com.crays.gmagro.models.Intervention;
 import com.crays.gmagro.models.Machine;
 import com.crays.gmagro.models.Symptome_defaut;
 import com.crays.gmagro.models.Symptome_objet;
+import com.crays.gmagro.tools.tools;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -70,7 +74,7 @@ public class AddIntervention extends AppCompatActivity {
                         calendar.set(Calendar.MINUTE,minute);
                         calendar.set(Calendar.SECOND,00);
 
-                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
                         date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
                     }
@@ -97,9 +101,8 @@ public class AddIntervention extends AppCompatActivity {
             public void onTimeSet (TimePicker view, int hourOfDay, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendar.set(Calendar.MINUTE, minute);
-                calendar.set(Calendar.SECOND, 00);
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
                 date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
             }
@@ -196,10 +199,6 @@ public class AddIntervention extends AppCompatActivity {
         as.execute("uc=getSession&getIntervID=true");
     }
 
-//    private void changeIDInterv(String s) {
-//        sessionIntervenantID = Integer.parseInt(s);
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -268,7 +267,7 @@ public class AddIntervention extends AppCompatActivity {
                 IntInt intIntAdded = new IntInt(0, intervID, tpsPasse);
 
                 if (!tpsPasse.equals("Temps passé")) {
-                    intervenantsAdded.add(intIntAdded);
+                        intervenantsAdded.add(intIntAdded);
                 } else {
                     Toast.makeText(AddIntervention.this, "Le champs Temps Passé est obligatoire", Toast.LENGTH_SHORT).show();
                 }
@@ -338,48 +337,53 @@ public class AddIntervention extends AppCompatActivity {
         sendInterv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Date currentTime = Calendar.getInstance().getTime();
-                int id = 0;
-                String dh_debut = btnHeureDebut.getText().toString();
-                String dh_fin =  btnHeureFin.getText().toString();
-                String commentaire = etCommentaire.getText().toString();
-                String tps_arret = btnTpsArret.getText().toString();
-                boolean changement_organe = cbChangementOrgane.isChecked();
-                boolean perte = cbPertes.isChecked();
-                String dh_creation = currentTime.toString();
-                String dh_derniere_maj= currentTime.toString();
-                int idIntervenant = sessionIntervenantID;
-                String activity_code = ((Activite) spinAct.getSelectedItem()).getCode();
-                String machine_code = ((Machine) spinMach.getSelectedItem()).getCode();
-                String cause_defaut_code = ((CauseDefaut) spinCDefaut.getSelectedItem()).getCode();
-                String cause_objet_code = ((CauseObjet) spinCObjet.getSelectedItem()).getCode();
-                String symptome_defaut_code = ((Symptome_defaut) spinSymptDefaut.getSelectedItem()).getCode();
-                String symptome_objet_code = ((Symptome_objet) spinSymptObjet.getSelectedItem()).getCode();
-                if (!cbInterFinie.isChecked()) {
-                    dh_fin = null;
+                if (btnHeureFin.equals("Selectionnez une date et une heure de debut")){
+                    Date currentTime = Calendar.getInstance().getTime();
+                    int id = 0;
+                    String dh_debut = btnHeureDebut.getText().toString();
+                    String dh_fin =  btnHeureFin.getText().toString();
+                    String commentaire = etCommentaire.getText().toString();
+                    String tps_arret = btnTpsArret.getText().toString();
+                    boolean changement_organe = cbChangementOrgane.isChecked();
+                    boolean perte = cbPertes.isChecked();
+                    String dh_creation = currentTime.toString();
+                    String dh_derniere_maj= currentTime.toString();
+                    int idIntervenant = sessionIntervenantID;
+                    String activity_code = ((Activite) spinAct.getSelectedItem()).getCode();
+                    String machine_code = ((Machine) spinMach.getSelectedItem()).getCode();
+                    String cause_defaut_code = ((CauseDefaut) spinCDefaut.getSelectedItem()).getCode();
+                    String cause_objet_code = ((CauseObjet) spinCObjet.getSelectedItem()).getCode();
+                    String symptome_defaut_code = ((Symptome_defaut) spinSymptDefaut.getSelectedItem()).getCode();
+                    String symptome_objet_code = ((Symptome_objet) spinSymptObjet.getSelectedItem()).getCode();
+                    if (!cbInterFinie.isChecked()) {
+                        dh_fin = null;
+                    }
+                    if (!cbMachineStoped.isChecked()){
+                        tps_arret = null;
+                    }
+                    Intervention intervention = new Intervention(
+                            id,
+                            dh_debut,
+                            dh_fin,
+                            commentaire,
+                            tps_arret,
+                            changement_organe,
+                            perte,
+                            dh_creation,
+                            dh_derniere_maj,
+                            idIntervenant,
+                            activity_code,
+                            machine_code,
+                            cause_defaut_code,
+                            cause_objet_code,
+                            symptome_defaut_code,
+                            symptome_objet_code
+                    );
+                    InterventionDAO.sendIntervention(intervention,intervenantsAdded);
                 }
-                if (!cbMachineStoped.isChecked()){
-                    tps_arret = null;
+                else {
+                    Toast.makeText(AddIntervention.this, "Vous devez insérer une date de début", Toast.LENGTH_SHORT).show();
                 }
-                Intervention intervention = new Intervention(
-                        id,
-                        dh_debut,
-                        dh_fin,
-                        commentaire,
-                        tps_arret,
-                        changement_organe,
-                        perte,
-                        dh_creation,
-                        dh_derniere_maj,
-                        idIntervenant,
-                        activity_code,
-                        machine_code,
-                        cause_defaut_code,
-                        cause_objet_code,
-                        symptome_defaut_code,
-                        symptome_objet_code
-                );
-                InterventionDAO.sendIntervention(intervention);
             }
         });
     }
