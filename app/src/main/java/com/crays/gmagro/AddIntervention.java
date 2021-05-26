@@ -337,7 +337,7 @@ public class AddIntervention extends AppCompatActivity {
         sendInterv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btnHeureFin.equals("Selectionnez une date et une heure de debut")){
+                if (!btnHeureDebut.equals("Selectionnez une date et une heure de debut")){
                     Date currentTime = Calendar.getInstance().getTime();
                     int id = 0;
                     String dh_debut = btnHeureDebut.getText().toString();
